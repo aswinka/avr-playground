@@ -10,6 +10,12 @@
  signal is half od the reference the LED goes off and on 
  otherwise.
 
+ Hardware & Setup:
+ - Arduino Uno R3
+ - Poti on Port C Pin 0 (Atmega 328P)
+ - LED + Resistor on Port B Pin 1 (Atmega 328P)
+ - Breadboard
+
 */
 #include<avr/io.h>
 #include <avr/interrupt.h>
