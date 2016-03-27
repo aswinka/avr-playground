@@ -45,11 +45,19 @@ int main (void)
     return 0;
 }
 
-// Interrupt Service Routine called by the ADC Interrupt
-// To make use of it, the ADIE flag must be set.
+/**
+ * Interrupt Service Routine called by the ADC Interrupt.
+ * To make use of it, the ADIE flag must be set.
+ */
 ISR (ADC_vect)
 {
-    PORTB ^= 0x01;
+    // Turn on debug LED
+    PORTB |= 0x01;
+    // Compare the computed value with our LIMIT and
+    // decide whether to turn on or off the LED.
+    // Note: as we are using ADLAR, the 8-bit value is
+    // stored in ADCH. Reading ADCH will clear the byte
+    // automatically.
     if (ADCH >= LIMIT) {
 	turnLEDOn();
     } else {
